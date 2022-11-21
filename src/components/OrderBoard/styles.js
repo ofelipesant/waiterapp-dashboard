@@ -26,6 +26,7 @@ export const ListContainer = styled.button`
 	}
 
 	.infos-content{
+		text-align: left;
 		.order-table{
 			font-weight: 500;
 		}

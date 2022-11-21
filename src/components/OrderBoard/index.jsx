@@ -3,29 +3,39 @@ import { ListContainer } from './styles'
 import  { MdBookmarkBorder } from 'react-icons/md'
 import { useState } from 'react'
 
-export default function OrderBoard(){
-	const [isOpenModal, setIsOpenModal] = useState(false)
+export default function OrderBoard(props){
+	const { order } = props
 
-	function handleOpenModal(){
-		console.log('deu certo')
+	const [isOpenModal, setIsOpenModal] = useState(false)
+	const [selectedOrder, setSelectedOrder] = useState(null)
+
+	function handleOpenModal(order){
+		setIsOpenModal(!isOpenModal)
+		setSelectedOrder(order)
+	}
+
+	function handleCloseModal(){
+		setIsOpenModal(!isOpenModal)
+		setSelectedOrder(null)
 	}
 
 	return(
 		<>
-			<OrderModal/>
-			<ListContainer onClick={handleOpenModal}>
+			<OrderModal isOpen={isOpenModal} order={selectedOrder} onClose={handleCloseModal}/>
+
+			<ListContainer onClick={() => handleOpenModal(order)}>
 				<div className='infos-container'>
 					<div className='icon-container'>
 						<MdBookmarkBorder size={25}/>
 					</div>
 					<div className='infos-content'>
-						<h3 className='order-table'>Mesa 2</h3>
-						<h4 className='order-items'>2 itens</h4>
+						<h3 className='order-table'>Mesa {order.table}</h3>
+						<h4 className='order-items'>{order.products.lenght} itens</h4>
 					</div>
 				</div>
 
 				<div className='status-container'>
-					<strong className='order-status'>Em produção</strong>
+					<strong className='order-status'>{order.status}</strong>
 				</div>
 			</ListContainer>
 		</>
