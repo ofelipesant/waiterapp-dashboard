@@ -41,6 +41,16 @@ export const Modal = styled.div`
 			background: transparent;
 			display: flex;
 		}
+
+		
+	}
+
+	.order-detail-button{
+		background: transparent;
+		border: none;
+		margin-top: 16px;
+		font-size: 16px;
+		text-decoration: underline;
 	}
 
 	.order-status-container{

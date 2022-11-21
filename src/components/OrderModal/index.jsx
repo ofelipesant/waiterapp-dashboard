@@ -49,6 +49,8 @@ export default function OrderModal(props){
 					)
 				})}
 
+				<button type='button' className='order-detail-button'>Acessar detalhes</button>
+
 				<div className='order-total-container'>
 					<span className='order-total-label'>Total:</span>
 					<h3 className='order-total'>{currencyFormatter(orderTotal)}</h3>
